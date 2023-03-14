@@ -11,4 +11,4 @@ export default function Movie(props) {
     <h2>{title}</h2>
     <img src={posterImage} />
   </div>;
-}
+} 
