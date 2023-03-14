@@ -1,5 +1,7 @@
 // import necessary hooks from React
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 // import our Movie component
 import Movie from './Movie';
@@ -25,9 +27,9 @@ export default function App() {
 
   return <div className="App">
     <h1>{greeting}</h1>
-    {greeting === 'Hello world!' && <button
+    {greeting === 'Hello world!' && <Button variant='danger'
       onClick={() => setGreeting('Goodbye cruel world!')}
-    >Say goodbye</button>}
+    >Say goodbye</Button>}
     {/* Loop through all movies and display each movie */}
     {movies.map(({ id, title, description }) => <Movie
       key={id}
