@@ -19,15 +19,12 @@ const Movies = () => {
 
     return (
         <div>
-
-
             {/* Loop through all movies and display each movie */}
             {movies.map(({ id, title, description }) => <Movie
                 key={id}
                 title={title}
                 description={description}
             />)}
-
         </div>
     );
 
