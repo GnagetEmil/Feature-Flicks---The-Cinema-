@@ -1,18 +1,23 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+// Import Bootstrap
+import { Container, Nav, Navbar } from "../bootstrap";
+// Import router
+import { Outlet, Link } from "react-router-dom";
 
 function navbar() {
     return (
-        <Navbar bg="dark" variant="dark" fixed='top'>
-            <Container>
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Screenings</Nav.Link>
-                    <Nav.Link href="#features">Movies</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+        <>
+            <Navbar bg="dark" variant="dark" fixed='top'>
+                <Container>
+                    <Nav className="me-auto">
+                        {/* Uses router to swap between pages */}
+                        <Link className="nav-link" Link to="/screenings">Screenings</Link>
+                        <Link className="nav-link" Link to="/movies">Movies</Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+
+            <Outlet />
+        </>
     );
 }
 
