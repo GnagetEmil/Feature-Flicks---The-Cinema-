@@ -1,9 +1,10 @@
 // import necessary hooks from React
 import { useState, useEffect } from 'react';
 import { Button, Container, Col, Row } from './bootstrap';
+import Navbar from './components/navbar'
 
 // import our Movie component
-import Movie from './Movie';
+import Movie from './Movie'
 
 export default function App() {
 
@@ -24,19 +25,16 @@ export default function App() {
   // Create a state variable called greeting
   const [greeting, setGreeting] = useState('Hello world!');
 
-  return <div className="App">
-    <h1>{greeting}</h1>
-    {greeting === 'Hello world!' && <Button variant='danger'
-      onClick={() => setGreeting('Goodbye cruel world!')}
-    >Say goodbye</Button>}
+  return (
+    <div className="App">
+      <Navbar />
+      {/* Loop through all movies and display each movie */}
+      {movies.map(({ id, title, description }) => <Movie
+        key={id}
+        title={title}
+        description={description}
+      />)}
 
-    {/* Loop through all movies and display each movie */}
-    {movies.map(({ id, title, description }) => <Movie
-      key={id}
-      title={title}
-      description={description}
-    />)}
-
-  </div>;
+    </div>);
 
 }
