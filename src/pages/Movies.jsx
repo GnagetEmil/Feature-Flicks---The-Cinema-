@@ -1,33 +1,30 @@
-// import necessary hooks from React
 import { useState, useEffect } from 'react';
-
-// import our Movie component
-import Movie from '../Movie';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Movie from '../components/Movie';
 
 const Movies = () => {
-    // A variable that will contain a list of movies
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        // Self-executing asyncronous anonomyous function
         (async () => {
-            // Fetch all the movies from the REST api
-            // and store them in the state variable movies
-            setMovies(await (await (fetch('/api/movies'))).json());
+            setMovies(await (await fetch('/api/movies')).json());
         })();
     }, []);
 
     return (
-        <div>
-            {/* Loop through all movies and display each movie */}
-            {movies.map(({ id, title, description }) => <Movie
-                key={id}
-                title={title}
-                description={description}
-            />)}
-        </div>
+        <Container className="text-center">
+            <Row className="justify-content-center align-items-center mt-4" style={{ height: '100%' }}>
+                {movies.map(({ id, title, description }) => (
+                    <Col key={id} className="my-4">
+                        <Movie title={title} description={description} />
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     );
-
 };
 
 export default Movies;

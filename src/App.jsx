@@ -10,7 +10,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Screenings />} />
+          <Route index element={<Movies />} />
           <Route path="screenings" element={<Screenings />} />
           <Route path="movies" element={<Movies />} />
           <Route path="*" element={<NoPage />} />

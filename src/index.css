@@ -6,8 +6,71 @@
 
 body {
   margin-top: 80px;
+  background: rgb(97, 240, 116);
+  background: radial-gradient(rgba(97, 240, 116, 0.069) 0%, rgba(70, 244, 225, 0.02663872384891454) 53%, rgba(21, 111, 255, 0.017) 100%);
 }
 
 .movie img {
-  width: 200px;
+  width: 302.px;
+  height: 400px;
+
+}
+
+.movie .card {
+
+  border: solid 1px black;
+  transition: all ease-in-out .3s
+}
+
+.movie .card:hover {
+  transform: scale(1.05) rotate(0deg);
+  background: rgb(97, 240, 116);
+  background: radial-gradient(circle, rgba(97, 240, 116, 0.1824930655856093) 0%, rgba(70, 244, 225, 0.04663872384891454) 53%, rgba(21, 112, 255, 0.17128858379289214) 100%);
+}
+
+
+.screening-and-seats {
+  text-align: center;
+}
+
+.seats {
+  text-align: center;
+}
+
+.seats>.row {
+  display: inline-block;
+}
+
+.seats>.row>div {
+  background-color: white;
+  color: black;
+  float: right;
+  text-align: center;
+  padding-top: 3px;
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
+  width: 30px;
+  height: 30px;
+  margin: 3px 1px;
+  cursor: pointer;
+}
+
+.seats>.row>.selected {
+  background-color: #72b457;
+  color: white;
+}
+
+.seats>.row>.occupied {
+  background-color: rgb(152, 28, 28);
+  color: white;
+  cursor: not-allowed;
+}
+
+.poster-screen {
+  width: 350px;
+  object-fit: cover;
+  aspect-ratio: 20 / 9;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
