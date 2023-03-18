@@ -2,8 +2,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Outlet, Link } from "react-router-dom";
 
-
-
 export default function Movie(props) {
   let { title, description } = props;
   let { posterImage } = description;
@@ -19,16 +17,12 @@ export default function Movie(props) {
           <Card.Text>
             THIS IS A DESCRIPTION
           </Card.Text>
-          <Button variant="primary" onClick={() => setTitle(title)}>Go somewhere</Button>
+          <Button>View Screenings</Button>
+          <Outlet />
         </Card.Body>
       </Card>
+
     </div >
+
   );
-}
-function setTitle(movieTitle) {
-  alert(movieTitle);
-  var title = movieTitle
-}
-function getTitle() {
-  return title;
 }

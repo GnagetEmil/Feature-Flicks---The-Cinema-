@@ -5,6 +5,7 @@ import Screenings from "./pages/Screenings";
 import Movies from "./pages/Movies";
 import NoPage from "./pages/NoPage";
 
+
 export default function App() {
   return (
     <BrowserRouter>
