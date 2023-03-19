@@ -22,10 +22,13 @@ const Screenings = () => {
     const [auditoriumNames, setAuditoriumNames] = useState({});
     const [categories, setCategories] = useState({});
 
+
+
     useEffect(() => {
         const fetchData = async () => {
             const moviesData = await (await fetch('/api/movies')).json();
             const auditoriumsData = await (await fetch('/api/auditoriums')).json();
+
             setMovieTitles(moviesData.reduce((obj, movie) => {
                 obj[movie.id] = movie.title;
                 return obj;
@@ -38,6 +41,8 @@ const Screenings = () => {
                 obj[movie.id] = movie.description.categories;
                 return obj;
             }, {}));
+
+
         }
         fetchData();
     }, []);

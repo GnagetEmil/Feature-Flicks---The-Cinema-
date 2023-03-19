@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Outlet, Link } from "react-router-dom";
+import Movie from './Movie';
 
 export default function Screening(props) {
+
+
+
   return (
     <div className="movie">
       <Card className="card mx-auto mb-4" style={{ width: '19rem' }}>
@@ -17,7 +22,8 @@ export default function Screening(props) {
           {Array.isArray(props.category) && (
             <Card.Text>{props.category.join(" | ")}</Card.Text>
           )}
-          <Button>Book</Button>
+
+          <Link to={`/booking/${props.id}`}><Button>Book</Button></Link>
         </Card.Body>
       </Card>
     </div>

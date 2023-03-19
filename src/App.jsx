@@ -5,6 +5,8 @@ import Screenings from "./pages/Screenings";
 import Movies from "./pages/Movies";
 import NoPage from "./pages/NoPage";
 
+import Booking from "./pages/Booking";
+
 
 export default function App() {
   return (
@@ -14,6 +16,7 @@ export default function App() {
           <Route index element={<Movies />} />
           <Route path="screenings" element={<Screenings />} />
           <Route path="movies" element={<Movies />} />
+          <Route path="booking/:id" element={<Booking />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
