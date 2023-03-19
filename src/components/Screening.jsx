@@ -14,9 +14,9 @@ export default function Screening(props) {
           <Card.Text>
             {props.auditoriumName}
           </Card.Text>
-
-          <Card.Text>{props.category.join(" | ")}</Card.Text>
-
+          <Card.Text>
+            {props.category}
+          </Card.Text>
           <Button>Book</Button>
         </Card.Body>
       </Card>
