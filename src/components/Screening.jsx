@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button';
 export default function Screening(props) {
   const [movieTitle, setMovieTitle] = useState('');
   const [auditoriumName, setAuditoriumName] = useState('');
+  const [category, setCategories] = useState('');;
 
+  // Get The Movie Title Based On the MovieId 
   useEffect(() => {
     fetch(`/api/movies/${props.movieId}`)
       .then(response => response.json())
@@ -13,12 +15,21 @@ export default function Screening(props) {
       .catch(error => console.log(error));
   }, [props.movieId]);
 
+  // Get The Auditorium Name Based On the AuditoriumId
   useEffect(() => {
     fetch(`/api/auditoriums/${props.auditoriumId}`)
       .then(response => response.json())
       .then(data => setAuditoriumName(data.name))
       .catch(error => console.log(error));
   }, [props.auditoriumId]);
+
+
+  useEffect(() => {
+    fetch(`/api/movies/${props.movieId}`)
+      .then(response => response.json())
+      .then(data => setCategories(data.description.categories))
+      .catch(error => console.log(error));
+  }, [props.movieId]);
 
   return (
     <div className="movie">
@@ -32,9 +43,9 @@ export default function Screening(props) {
             {auditoriumName}
           </Card.Text>
           <Card.Text>
-
+            {category + " "}
           </Card.Text>
-          <Button>View Screenings</Button>
+          <Button>Book</Button>
         </Card.Body>
       </Card>
     </div>

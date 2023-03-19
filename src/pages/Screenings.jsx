@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Screening from '../components/Screening';
 
+
 const Screenings = () => {
     const [screenings, setScreenings] = useState([]);
 
