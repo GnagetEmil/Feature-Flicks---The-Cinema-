@@ -14,9 +14,6 @@ export default function Movie(props) {
         <Card.Img variant="top" src={posterImage} />
         <Card.Body className="text-center">
           <Card.Title>{title}</Card.Title>
-          <Card.Text>
-            THIS IS A DESCRIPTION
-          </Card.Text>
           <Button>View Screenings</Button>
           <Outlet />
         </Card.Body>

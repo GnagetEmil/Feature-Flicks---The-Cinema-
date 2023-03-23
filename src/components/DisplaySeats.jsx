@@ -63,6 +63,7 @@ export default function DisplayChairs({ screeningId }) {
 
   // output the seats
   return s.seats.length === 0 ? null : <div className="screening-and-seats">
+
     <h1>{s.screening.movie}</h1>
     <h2>{new Intl.DateTimeFormat('sv-SE', {
       weekday: "long",

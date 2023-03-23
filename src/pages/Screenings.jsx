@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Screening from '../components/Screening';
 
-
 const Screenings = () => {
     const [screeningsData, setScreeningsData] = useState([]);
     const [screenings, setScreenings] = useState([]);
@@ -24,8 +23,6 @@ const Screenings = () => {
 
     const [movieLengths, setMovieLength] = useState({});
     const [moviePosters, setMoviePosters] = useState({});
-
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,11 +50,9 @@ const Screenings = () => {
                 return obj;
             }, {}));
 
-
         }
         fetchData();
     }, []);
-
 
     const handleCategorySelect = (e) => {
         const selectedCategory = e.target.value;
@@ -71,8 +66,20 @@ const Screenings = () => {
         }
     }
 
+    const getFormattedDate = (dateStr) => {
+        const date = new Date(dateStr);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString(undefined, options);
+    };
 
-
+    const screeningsByDate = screenings.reduce((obj, screening) => {
+        const date = new Date(screening.time).toLocaleDateString();
+        if (!obj[date]) {
+            obj[date] = [];
+        }
+        obj[date].push(screening);
+        return obj;
+    }, {});
 
     return (
         <Container className="text-center">
@@ -90,29 +97,29 @@ const Screenings = () => {
                 </select>
             </div>
 
-            <Row className="justify-content-center align-items-center mt-4" style={{ height: '100%' }}>
-
-                {screenings.map(({ id, time, movieId, auditoriumId }) => (
-                    <Col key={id} className="my-4">
-                        <Screening
-                            id={id}
-                            time={time}
-                            movieId={movieId}
-                            movieTitle={movieTitles[movieId]}
-                            auditoriumId={auditoriumId}
-                            auditoriumName={auditoriumNames[auditoriumId]}
-                            category={categories[movieId]}
-                            length={movieLengths[movieId]}
-                            poster={moviePosters[movieId]}
-                        />
-                    </Col>
-                ))}
-            </Row>
+            {Object.entries(screeningsByDate).map(([date, screeningsForDate]) => (
+                <div key={date}>
+                    <h2 className="mt-4">{getFormattedDate(date)}</h2>
+                    <Row className="justify-content-center align-items-center mt-4" style={{ height: '100%' }}>
+                        {screeningsForDate.map(({ id, time, movieId, auditoriumId }) => (
+                            <Col key={id} className="my-4">
+                                <Screening
+                                    id={id}
+                                    time={time}
+                                    movieId={movieId}
+                                    movieTitle={movieTitles[movieId]}
+                                    auditoriumId={auditoriumId}
+                                    auditoriumName={auditoriumNames[auditoriumId]}
+                                    category={categories[movieId]}
+                                    length={movieLengths[movieId]}
+                                    poster={moviePosters[movieId]}
+                                />
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+            ))}
         </Container>
-
-
-
-
     );
 };
 
