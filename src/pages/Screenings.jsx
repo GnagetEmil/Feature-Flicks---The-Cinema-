@@ -22,6 +22,9 @@ const Screenings = () => {
     const [auditoriumNames, setAuditoriumNames] = useState({});
     const [categories, setCategories] = useState({});
 
+    const [movieLengths, setMovieLength] = useState({});
+    const [moviePosters, setMoviePosters] = useState({});
+
 
 
     useEffect(() => {
@@ -41,6 +44,14 @@ const Screenings = () => {
                 obj[movie.id] = movie.description.categories;
                 return obj;
             }, {}));
+            setMovieLength(moviesData.reduce((obj, movie) => {
+                obj[movie.id] = movie.description.length;
+                return obj;
+            }, {}));
+            setMoviePosters(moviesData.reduce((obj, movie) => {
+                obj[movie.id] = movie.description.posterImage;
+                return obj;
+            }, {}));
 
 
         }
@@ -53,12 +64,15 @@ const Screenings = () => {
         if (selectedCategory === "all") {
             setScreenings(screeningsData);
         } else {
-            const filteredScreenings = screeningsData.filter(
+            let filteredScreenings = screeningsData.filter(
                 (screening) => categories[screening.movieId]?.includes(selectedCategory)
             );
             setScreenings(filteredScreenings);
         }
     }
+
+
+
 
     return (
         <Container className="text-center">
@@ -75,7 +89,9 @@ const Screenings = () => {
                     ))}
                 </select>
             </div>
+
             <Row className="justify-content-center align-items-center mt-4" style={{ height: '100%' }}>
+
                 {screenings.map(({ id, time, movieId, auditoriumId }) => (
                     <Col key={id} className="my-4">
                         <Screening
@@ -86,6 +102,8 @@ const Screenings = () => {
                             auditoriumId={auditoriumId}
                             auditoriumName={auditoriumNames[auditoriumId]}
                             category={categories[movieId]}
+                            length={movieLengths[movieId]}
+                            poster={moviePosters[movieId]}
                         />
                     </Col>
                 ))}
