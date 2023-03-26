@@ -7,3 +7,6 @@ The screenings page utilizes the screening component. This component defines the
 Similarly, the movies page utilizes a movie component which also contain the card structure for each movie displayed on the movies page.
 
 From the screenings and movies page props are passed to the components. These include things such as the movie poster, title, date, length, etc.
+
+The final component is DisplaySeats. This contains all the login for fetching the seating information for each screening. It also displays which seats are
+occupied and which seats are available. This component is called in the Booking page. 
